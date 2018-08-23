@@ -9,9 +9,25 @@ namespace helloWorld.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        /*public ActionResult Index()
         {
             return View();
+        }*/
+        public string Index(int? id)
+        {
+            return "hello " + id;
+        }
+        public string Index2(string id)
+        {
+            return @"
+<html>
+<head>
+<title> hello world </title>
+</head>
+<body>
+<p>hello <span style=""color:red"">" + id + @"</span></p>
+</body>
+</html>";
         }
     }
 }
