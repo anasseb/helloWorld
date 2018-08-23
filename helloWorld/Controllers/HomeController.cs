@@ -9,25 +9,35 @@ namespace helloWorld.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        /*public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
+
+        public ActionResult Index (string id)
         {
-            return View();
-        }*/
-        public string Index(int? id)
-        {
-            return "hello " + id;
+            if (string.IsNullOrWhiteSpace(id))
+                return View("Error");
+            else
+                return View();
         }
-        public string Index2(string id)
-        {
-            return @"
-<html>
-<head>
-<title> hello world </title>
-</head>
-<body>
-<p>hello <span style=""color:red"">" + id + @"</span></p>
-</body>
-</html>";
-        }
+
+        //public string index(int? id)
+        //{
+        //    return "hello " + id;
+        //}
+
+        //public string Index(string id)
+        //{
+        //    return @"
+        //<html>
+        //    <head>
+        //        <title>Hello World</title>
+        //    </head>
+        //    <body>
+        //        <p>Hello <span style=""color:red"">" + id + @"</span></p>
+        //    </body>
+        //</html>";
+        //}
     }
 }
