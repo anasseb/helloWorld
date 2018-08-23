@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using helloWorld.Models;
 
 namespace helloWorld.Controllers
 {
@@ -14,13 +15,26 @@ namespace helloWorld.Controllers
         //    return View();
         //}
 
-        public ActionResult Index (string id)
+        public ActionResult ListeClients()
         {
-            if (string.IsNullOrWhiteSpace(id))
-                return View("Error");
-            else
-                return View();
+            Clients clients = new Clients();
+            ViewData["Clients"] = clients.ObtenirListeClients();
+            return View();
         }
+
+        public ActionResult ChercheClient(string Id)
+        {
+            ViewData["Nom"] = Id;
+            Clients clients = new Clients();
+            Client client = clients.ObtenirListeClients().FirstOrDefault(c => c.Nom == Id);
+            if(client != null)
+            {
+                ViewData["Age"] = client.Age;
+                return View("Trouve");
+            }
+            return View("NonTrouve");
+        }
+
 
         //public string index(int? id)
         //{
